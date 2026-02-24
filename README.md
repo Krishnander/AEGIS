@@ -1,4 +1,4 @@
-# AEGIS - Clinical Triage AI
+# AEGIS - Clinical Triage AI Assistant
 
 <div align="center">
 
@@ -43,7 +43,7 @@ AEGIS takes free-text symptom descriptions (e.g. *"55 y/o male, crushing chest p
 │  │  (Next.js)   │───▶│  Gemma 3 1B · MediaPipe · WGPU │ │
 │  └──────────────┘    └────────────────────────────────┘ │
 │         │                                                │
-│         │ fallback (if online)                           │
+│         │                                                │
 │         ▼                                                │
 │  ┌────────────────────────────────────────────────────┐  │
 │  │            Cloud API (Kaggle T4 GPU)               │  │
