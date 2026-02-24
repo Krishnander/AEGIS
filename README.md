@@ -11,8 +11,6 @@
 A hybrid edge + cloud clinical triage assistant built on Google's MedGemma model family.  
 Runs offline in the browser. No patient data leaves the device.
 
-[Kaggle Writeup](docs/kaggle-writeup.md) · [Demo Video Script](docs/video-script.md) · [Kaggle Notebook](brain/medgemma_kaggle_server.ipynb)
-
 </div>
 
 ---
