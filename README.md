@@ -166,11 +166,6 @@ aegis-core/
 │   ├── medgemma_kaggle_server.ipynb # Kaggle notebook - MedGemma 1.5 4B
 │   ├── prompts.py                   # Clinical prompt templates
 │   └── requirements.txt
-├── docs/                             # Submission documents
-│   ├── kaggle-writeup.md
-│   ├── video-script.md
-│   ├── competition-requirements.md
-│   └── medgemma-submission-guide.md
 ├── docker-compose.yml
 └── LICENSE                           # Apache 2.0
 ```
