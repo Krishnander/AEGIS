@@ -1,0 +1,446 @@
+{
+  "cases": [
+    {
+      "id": "cardiac-001",
+      "name": "Acute Coronary Syndrome with Pharmacogenomics",
+      "category": "cardiac",
+      "difficulty": "high",
+      "symptoms": [
+        "Chest Pain",
+        "Shortness of Breath",
+        "Diaphoresis",
+        "Radiating Pain to Left Arm",
+        "Nausea"
+      ],
+      "severity": "high",
+      "summary": "Patient presents with classic symptoms of acute coronary syndrome. The combination of substernal chest pain, diaphoresis, and radiation to the left arm is highly suggestive of myocardial infarction. Immediate cardiac workup including ECG, cardiac enzymes, and possible cath lab activation is recommended.",
+      "differential": [
+        {
+          "condition": "ST-Elevation Myocardial Infarction",
+          "probability": 75,
+          "recommendation": "Immediate cath lab activation, door-to-balloon goal <90 minutes",
+          "suggested_medications": ["Warfarin", "Clopidogrel", "Heparin"]
+        },
+        {
+          "condition": "Unstable Angina",
+          "probability": 15,
+          "recommendation": "Risk stratification, consider early invasive strategy",
+          "suggested_medications": ["Aspirin", "Clopidogrel"]
+        },
+        {
+          "condition": "Aortic Dissection",
+          "probability": 5,
+          "recommendation": "CT angiogram of chest if ECG does not show STEMI"
+        },
+        {
+          "condition": "Pulmonary Embolism",
+          "probability": 5,
+          "recommendation": "D-dimer, CTPA if high clinical suspicion"
+        }
+      ],
+      "genomic_data": {
+        "patient_id": "PT-2024-001",
+        "variants": [
+          {
+            "gene": "CYP2C9",
+            "variant": "*2/*3",
+            "zygosity": "Compound Heterozygote",
+            "effect": "Poor metabolizer - significantly reduced warfarin clearance"
+          },
+          {
+            "gene": "VKORC1",
+            "variant": "-1639G>A",
+            "zygosity": "Homozygous",
+            "effect": "Increased sensitivity to warfarin - requires lower doses"
+          },
+          {
+            "gene": "CYP2C19",
+            "variant": "*2",
+            "zygosity": "Heterozygote",
+            "effect": "Intermediate metabolizer - reduced clopidogrel activation"
+          }
+        ],
+        "pharmacogenomic_alerts": [
+          {
+            "medication": "Warfarin",
+            "severity": "HIGH",
+            "recommendation": "REDUCE DOSE by 50-70%. Standard loading doses will cause over-anticoagulation and bleeding risk. Target INR 2.0-2.5 instead of 2.5-3.0. Consider using pharmacogenetic dosing algorithms (IWPC). Monitor INR daily until stable."
+          },
+          {
+            "medication": "Clopidogrel",
+            "severity": "MODERATE",
+            "recommendation": "Consider alternative antiplatelet therapy (prasugrel or ticagrelor) if no contraindications. If clopidogrel required, consider higher loading dose and verify platelet function testing."
+          }
+        ]
+      },
+      "graph_data": {
+        "nodes": [
+          { "id": "patient", "label": "55M with Chest Pain", "type": "patient" },
+          { "id": "symptom1", "label": "Substernal Chest Pain", "type": "symptom" },
+          { "id": "symptom2", "label": "Diaphoresis", "type": "symptom" },
+          { "id": "symptom3", "label": "Arm Radiation", "type": "symptom" },
+          { "id": "risk1", "label": "High Risk: MI", "type": "risk", "severity": "high" },
+          { "id": "genomic1", "label": "CYP2C9 *2/*3", "type": "history", "severity": "high" }
+        ],
+        "edges": [
+          { "id": "e1-2", "source": "patient", "target": "symptom1" },
+          { "id": "e1-3", "source": "patient", "target": "symptom2" },
+          { "id": "e1-4", "source": "patient", "target": "symptom3" },
+          { "id": "e2-5", "source": "symptom1", "target": "risk1", "label": "Indicates" },
+          { "id": "e3-5", "source": "symptom2", "target": "risk1", "label": "Supports" },
+          { "id": "e4-5", "source": "symptom3", "target": "risk1", "label": "Classic for" },
+          { "id": "e6-5", "source": "genomic1", "target": "risk1", "label": "Affects Rx" }
+        ]
+      }
+    },
+    {
+      "id": "neurological-003",
+      "name": "Stroke with Codeine Pain Management",
+      "category": "neurological",
+      "difficulty": "high",
+      "symptoms": [
+        "Sudden Weakness on Left Side",
+        "Facial Droop",
+        "Slurred Speech",
+        "Severe Headache"
+      ],
+      "severity": "high",
+      "summary": "Patient presents with acute stroke syndrome requiring immediate intervention. Codeine-based analgesics may be considered for headache management, but pharmacogenomic testing reveals critical CYP2D6 ultra-rapid metabolizer status.",
+      "differential": [
+        {
+          "condition": "Ischemic Stroke",
+          "probability": 70,
+          "recommendation": "tPA if within window, endovascular therapy if large vessel occlusion",
+          "suggested_medications": ["tPA", "Aspirin", "Codeine"]
+        },
+        {
+          "condition": "Hemorrhagic Stroke",
+          "probability": 15,
+          "recommendation": "CT head without contrast, neurosurgery consult"
+        }
+      ],
+      "genomic_data": {
+        "patient_id": "PT-2024-002",
+        "variants": [
+          {
+            "gene": "CYP2D6",
+            "variant": "*1xN",
+            "zygosity": "Gene Duplication",
+            "effect": "Ultra-rapid metabolizer - rapid conversion of codeine to morphine"
+          }
+        ],
+        "pharmacogenomic_alerts": [
+          {
+            "medication": "Codeine",
+            "severity": "HIGH",
+            "recommendation": "DO NOT USE. Ultra-rapid metabolizers convert codeine to morphine rapidly and completely, leading to life-threatening respiratory depression. Use alternative analgesics: acetaminophen, NSAIDs, or morphine sulfate (with caution)."
+          }
+        ]
+      },
+      "graph_data": {
+        "nodes": [
+          { "id": "patient", "label": "62F with Sudden Onset", "type": "patient" },
+          { "id": "symptom1", "label": "Left Hemiparesis", "type": "symptom" },
+          { "id": "symptom2", "label": "Facial Droop", "type": "symptom" },
+          { "id": "symptom3", "label": "Aphasia", "type": "symptom" },
+          { "id": "risk1", "label": "High Risk: Stroke", "type": "risk", "severity": "high" },
+          { "id": "genomic1", "label": "CYP2D6 UM", "type": "history", "severity": "high" }
+        ],
+        "edges": [
+          { "id": "e1-2", "source": "patient", "target": "symptom1" },
+          { "id": "e1-3", "source": "patient", "target": "symptom2" },
+          { "id": "e1-4", "source": "patient", "target": "symptom3" },
+          { "id": "e2-5", "source": "symptom1", "target": "risk1", "label": "Focal Deficit" },
+          { "id": "e3-5", "source": "symptom2", "target": "risk1", "label": "Cranial Nerve" },
+          { "id": "e4-5", "source": "symptom3", "target": "risk1", "label": "Language" },
+          { "id": "e6-genomic", "source": "genomic1", "target": "risk1", "label": "Codeine CONTRA" }
+        ]
+      }
+    },
+    {
+      "id": "respiratory-001",
+      "name": "Pulmonary Embolism",
+      "category": "respiratory",
+      "difficulty": "high",
+      "symptoms": [
+        "Sudden Onset Shortness of Breath",
+        "Right Chest Pain",
+        "Leg Swelling",
+        "Tachycardia",
+        "Cough with Blood-Streaked Sputum"
+      ],
+      "severity": "high",
+      "summary": "Patient presents with classic signs of pulmonary embolism. The combination of unilateral leg swelling, sudden dyspnea, and hemoptysis is highly concerning for PE. Risk factors should be assessed using Wells criteria. Immediate anticoagulation and imaging are indicated. Consider thrombolysis if hemodynamically unstable.",
+      "differential": [
+        {
+          "condition": "Pulmonary Embolism",
+          "probability": 80,
+          "recommendation": "CT pulmonary angiogram, start anticoagulation"
+        },
+        {
+          "condition": "Pneumonia",
+          "probability": 10,
+          "recommendation": "Chest X-ray, antibiotics if confirmed"
+        },
+        {
+          "condition": "Pneumothorax",
+          "probability": 5,
+          "recommendation": "Chest X-ray, needle decompression if tension suspected"
+        },
+        {
+          "condition": "Heart Failure Exacerbation",
+          "probability": 5,
+          "recommendation": "BNP, echo, diuresis"
+        }
+      ],
+      "graph_data": {
+        "nodes": [
+          { "id": "patient", "label": "42F Post-Op Day 3", "type": "patient" },
+          { "id": "symptom1", "label": "Sudden Dyspnea", "type": "symptom" },
+          { "id": "symptom2", "label": "Leg Swelling (R)", "type": "symptom" },
+          { "id": "symptom3", "label": "Hemoptysis", "type": "symptom" },
+          { "id": "risk1", "label": "High Risk: PE", "type": "risk", "severity": "high" },
+          { "id": "history1", "label": "Recent Surgery", "type": "history" }
+        ],
+        "edges": [
+          { "id": "e1-2", "source": "patient", "target": "symptom1" },
+          { "id": "e1-3", "source": "patient", "target": "symptom2" },
+          { "id": "e1-4", "source": "patient", "target": "symptom3" },
+          { "id": "e1-5", "source": "patient", "target": "history1" },
+          { "id": "e2-6", "source": "history1", "target": "risk1", "label": "Risk Factor" },
+          { "id": "e3-6", "source": "symptom1", "target": "risk1", "label": "Primary Sign" },
+          { "id": "e4-6", "source": "symptom2", "target": "risk1", "label": "Source" }
+        ]
+      }
+    },
+    {
+      "id": "neurological-001",
+      "name": "Acute Stroke",
+      "category": "neurological",
+      "difficulty": "high",
+      "symptoms": [
+        "Sudden Weakness on Left Side",
+        "Facial Droop",
+        "Slurred Speech",
+        "Vision Changes",
+        "Severe Headache"
+      ],
+      "severity": "high",
+      "summary": "Patient presents with acute stroke syndrome. The sudden onset of unilateral weakness, facial droop, and slurred speech is highly suggestive of acute cerebrovascular accident. Time is critical - door-to-needle goal is 60 minutes for tPA. Immediate CT head, stroke panel, and neurology consultation are required. Determine last known well time immediately.",
+      "differential": [
+        {
+          "condition": "Ischemic Stroke",
+          "probability": 70,
+          "recommendation": "tPA if within window, endovascular therapy if large vessel occlusion"
+        },
+        {
+          "condition": "Hemorrhagic Stroke",
+          "probability": 15,
+          "recommendation": "CT head without contrast, neurosurgery consult"
+        },
+        {
+          "condition": "TIA",
+          "probability": 10,
+          "recommendation": "Admit for workup, antiplatelet therapy"
+        },
+        {
+          "condition": "Bell's Palsy",
+          "probability": 5,
+          "recommendation": "Rule out stroke first, then steroids"
+        }
+      ],
+      "graph_data": {
+        "nodes": [
+          { "id": "patient", "label": "68M with Sudden Onset", "type": "patient" },
+          { "id": "symptom1", "label": "Left Hemiparesis", "type": "symptom" },
+          { "id": "symptom2", "label": "Facial Droop", "type": "symptom" },
+          { "id": "symptom3", "label": "Aphasia", "type": "symptom" },
+          { "id": "risk1", "label": "High Risk: Stroke", "type": "risk", "severity": "high" },
+          { "id": "history1", "label": "HTN, DM, AFib", "type": "history" }
+        ],
+        "edges": [
+          { "id": "e1-2", "source": "patient", "target": "symptom1" },
+          { "id": "e1-3", "source": "patient", "target": "symptom2" },
+          { "id": "e1-4", "source": "patient", "target": "symptom3" },
+          { "id": "e1-5", "source": "patient", "target": "history1" },
+          { "id": "e2-6", "source": "history1", "target": "risk1", "label": "Risk Factors" },
+          { "id": "e3-6", "source": "symptom1", "target": "risk1", "label": "Focal Deficit" },
+          { "id": "e4-6", "source": "symptom2", "target": "risk1", "label": "Cranial Nerve" }
+        ]
+      }
+    },
+    {
+      "id": "abdominal-001",
+      "name": "Acute Appendicitis",
+      "category": "abdominal",
+      "difficulty": "medium",
+      "symptoms": [
+        "Periumbilical Pain",
+        "Right Lower Quadrant Pain",
+        "Nausea",
+        "Low-Grade Fever",
+        "Loss of Appetite"
+      ],
+      "severity": "medium",
+      "summary": "Patient presents with classic signs of acute appendicitis. The progression from periumbilical pain to localized RLQ pain with associated anorexia and nausea is highly concerning. Rovsing's sign, psoas sign, and rebound tenderness should be assessed. Labs should include CBC, CMP, and urinalysis. Surgical consultation and CT abdomen/pelvis are indicated.",
+      "differential": [
+        {
+          "condition": "Acute Appendicitis",
+          "probability": 75,
+          "recommendation": "CT abdomen/pelvis, surgical consult, appendectomy"
+        },
+        {
+          "condition": "Mesenteric Adenitis",
+          "probability": 10,
+          "recommendation": "Viral illness workup, supportive care"
+        },
+        {
+          "condition": "Ovarian Torsion (female)",
+          "probability": 8,
+          "recommendation": "Pelvic ultrasound, gynecology consult"
+        },
+        {
+          "condition": "Meckel's Diverticulitis",
+          "probability": 7,
+          "recommendation": "CT scan, surgical evaluation"
+        }
+      ],
+      "graph_data": {
+        "nodes": [
+          { "id": "patient", "label": "22M with Abdominal Pain", "type": "patient" },
+          { "id": "symptom1", "label": "Periumbilical Pain", "type": "symptom" },
+          { "id": "symptom2", "label": "RLQ Pain", "type": "symptom" },
+          { "id": "symptom3", "label": "Anorexia", "type": "symptom" },
+          { "id": "risk1", "label": "Medium Risk: Appendicitis", "type": "risk", "severity": "medium" }
+        ],
+        "edges": [
+          { "id": "e1-2", "source": "patient", "target": "symptom1" },
+          { "id": "e1-3", "source": "patient", "target": "symptom2" },
+          { "id": "e1-4", "source": "patient", "target": "symptom3" },
+          { "id": "e2-5", "source": "symptom1", "target": "risk1", "label": "Migrates to" },
+          { "id": "e3-5", "source": "symptom2", "target": "risk1", "label": "Localizes to" },
+          { "id": "e4-5", "source": "symptom3", "target": "risk1", "label": "Associated with" }
+        ]
+      }
+    },
+    {
+      "id": "infectious-001",
+      "name": "Sepsis",
+      "category": "infectious",
+      "difficulty": "high",
+      "symptoms": [
+        "High Fever",
+        "Rapid Heart Rate",
+        "Rapid Breathing",
+        "Confusion",
+        "Low Blood Pressure",
+        "Decreased Urine Output"
+      ],
+      "severity": "high",
+      "summary": "Patient presents with signs of septic shock. The combination of fever, tachycardia, tachypnea, hypotension, and altered mental status is highly concerning for severe sepsis with organ dysfunction. This is a medical emergency requiring immediate intervention. Begin sepsis protocol immediately - obtain blood cultures, lactate, administer broad-spectrum antibiotics and fluid boluses.",
+      "differential": [
+        {
+          "condition": "Septic Shock",
+          "probability": 70,
+          "recommendation": "Sepsis bundle: cultures, lactate, antibiotics within 1hr, 30ml/kg fluids"
+        },
+        {
+          "condition": "Neurogenic Shock",
+          "probability": 10,
+          "recommendation": "Rule out spinal injury, vasopressors if needed"
+        },
+        {
+          "condition": "Anaphylactic Shock",
+          "probability": 10,
+          "recommendation": "Epinephrine, airway support, antihistamines"
+        },
+        {
+          "condition": "Cardiogenic Shock",
+          "probability": 10,
+          "recommendation": "Echo, inotropes, rule out MI"
+        }
+      ],
+      "graph_data": {
+        "nodes": [
+          { "id": "patient", "label": "75F with Altered Mental Status", "type": "patient" },
+          { "id": "symptom1", "label": "High Fever (39.5°C)", "type": "symptom" },
+          { "id": "symptom2", "label": "Tachycardia (130)", "type": "symptom" },
+          { "id": "symptom3", "label": "Hypotension (85/50)", "type": "symptom" },
+          { "id": "symptom4", "label": "Confusion", "type": "symptom" },
+          { "id": "risk1", "label": "Critical: Sepsis", "type": "risk", "severity": "high" }
+        ],
+        "edges": [
+          { "id": "e1-2", "source": "patient", "target": "symptom1" },
+          { "id": "e1-3", "source": "patient", "target": "symptom2" },
+          { "id": "e1-4", "source": "patient", "target": "symptom3" },
+          { "id": "e1-5", "source": "patient", "target": "symptom4" },
+          { "id": "e2-6", "source": "symptom1", "target": "risk1", "label": "Sign of Infection" },
+          { "id": "e3-6", "source": "symptom2", "target": "risk1", "label": "Compensatory" },
+          { "id": "e4-6", "source": "symptom3", "target": "risk1", "label": "Organ Dysfunction" },
+          { "id": "e5-6", "source": "symptom4", "target": "risk1", "label": "End Organ" }
+        ]
+      }
+    },
+    {
+      "id": "neurological-002",
+      "name": "Migraine",
+      "category": "neurological",
+      "difficulty": "low",
+      "symptoms": [
+        "Throbbing Headache",
+        "Sensitivity to Light",
+        "Nausea",
+        "Aura",
+        "Visual Disturbances"
+      ],
+      "severity": "low",
+      "summary": "Patient presents with classic migraine headache. The unilateral throbbing pain, photophobia, nausea, and visual aura are characteristic of migraine with aura. Red flags including thunderclap onset, neurological deficits, and fever should be absent. Treatment includes NSAIDs, triptans, antiemetics, and dark quiet environment.",
+      "differential": [
+        {
+          "condition": "Migraine with Aura",
+          "probability": 80,
+          "recommendation": "Triptans, antiemetics, rest in dark room"
+        },
+        {
+          "condition": "Tension Headache",
+          "probability": 10,
+          "recommendation": "NSAIDs, muscle relaxants if needed"
+        },
+        {
+          "condition": "Cluster Headache",
+          "probability": 5,
+          "recommendation": "Oxygen therapy, triptans"
+        },
+        {
+          "condition": "Secondary Headache",
+          "probability": 5,
+          "recommendation": "Rule out intracranial pathology if atypical"
+        }
+      ],
+      "graph_data": {
+        "nodes": [
+          { "id": "patient", "label": "32F with Headache", "type": "patient" },
+          { "id": "symptom1", "label": "Throbbing Pain", "type": "symptom" },
+          { "id": "symptom2", "label": "Photophobia", "type": "symptom" },
+          { "id": "symptom3", "label": "Visual Aura", "type": "symptom" },
+          { "id": "risk1", "label": "Low Risk: Migraine", "type": "risk", "severity": "low" }
+        ],
+        "edges": [
+          { "id": "e1-2", "source": "patient", "target": "symptom1" },
+          { "id": "e1-3", "source": "patient", "target": "symptom2" },
+          { "id": "e1-4", "source": "patient", "target": "symptom3" },
+          { "id": "e2-5", "source": "symptom1", "target": "risk1", "label": "Character" },
+          { "id": "e3-5", "source": "symptom2", "target": "risk1", "label": "Associated" },
+          { "id": "e4-5", "source": "symptom3", "target": "risk1", "label": "Classic for" }
+        ]
+      }
+    }
+  ],
+  "categories": [
+    { "id": "cardiac", "name": "Cardiac", "color": "red", "description": "Heart-related emergencies" },
+    { "id": "respiratory", "name": "Respiratory", "color": "blue", "description": "Lung and breathing issues" },
+    { "id": "neurological", "name": "Neurological", "color": "purple", "description": "Brain and nerve conditions" },
+    { "id": "abdominal", "name": "Abdominal", "color": "green", "description": "GI and abdominal conditions" },
+    { "id": "infectious", "name": "Infectious", "color": "orange", "description": "Infection and sepsis" }
+  ]
+}

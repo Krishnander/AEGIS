@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Clinical dark theme — inspired by real EHR systems */
+    --background: 220 20% 6%;
+    --foreground: 210 20% 92%;
+    --card: 220 18% 8%;
+    --card-foreground: 210 20% 92%;
+    --popover: 220 18% 8%;
+    --popover-foreground: 210 20% 92%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 220 20% 6%;
+    --secondary: 220 14% 14%;
+    --secondary-foreground: 210 20% 80%;
+    --muted: 220 14% 12%;
+    --muted-foreground: 215 12% 55%;
+    --accent: 220 14% 14%;
+    --accent-foreground: 210 20% 92%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 15%;
+    --input: 220 13% 15%;
+    --ring: 199 89% 48%;
+    --radius: 0.375rem;
+
+    /* Clinical semantic colors */
+    --clinical-critical: 0 72% 51%;
+    --clinical-warning: 38 92% 50%;
+    --clinical-success: 152 69% 41%;
+    --clinical-info: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    font-family: var(--font-body), "Inter", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono), "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+}
+
+/* React Flow customizations */
+.react-flow__node {
+  font-family: inherit;
+}
+
+.react-flow__edge-text {
+  fill: hsl(210 20% 80%);
+  font-size: 11px;
+}
+
+/* Minimal scrollbar — almost invisible until hovered */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.15);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.3);
+}
+
+/* Subtle entrance animation */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out;
+}
+
+/* Clinical pulse for live indicators */
+@keyframes clinical-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-clinical-pulse {
+  animation: clinical-pulse 2s ease-in-out infinite;
+}
+
+/* Shimmer for loading bar */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+/* Severity bar accent */
+.severity-bar-critical { border-left: 3px solid hsl(var(--clinical-critical)); }
+.severity-bar-warning { border-left: 3px solid hsl(var(--clinical-warning)); }
+.severity-bar-success { border-left: 3px solid hsl(var(--clinical-success)); }
+
+/* Selection styling */
+::selection {
+  background: hsl(var(--primary) / 0.25);
+}
+
+/* Focus visible ring */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring) / 0.5);
+  outline-offset: 2px;
+}

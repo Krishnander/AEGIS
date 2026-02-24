@@ -1,0 +1,31 @@
+# Environment / secrets
+.env
+.env.local
+.env*.local
+
+# Debug artifacts
+.playwright-mcp/
+.sisyphus/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Large model files (downloaded at build/dev time)
+web/public/models/*.task
+web/public/models/*.bin
+web/public/models/*.litertlm
+
+# Misc
+*.log
+nul
+
+.docs/
+docs/

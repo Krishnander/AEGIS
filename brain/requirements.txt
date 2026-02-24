@@ -1,0 +1,23 @@
+# Core ML/AI Dependencies
+torch==2.5.0
+transformers==4.47.0
+bitsandbytes==0.45.0
+accelerate==1.2.0
+huggingface-hub>=0.20.0
+
+# LangGraph & LangChain for Agentic Workflows
+langgraph>=0.0.20
+langchain>=0.1.0
+langchain-community>=0.0.10
+
+# API & Server Dependencies
+fastapi==0.115.0
+uvicorn==0.32.0
+pyngrok==7.2.0
+nest_asyncio>=1.5.8
+
+# Data Handling
+pydantic>=2.5.0
+python-multipart>=0.0.6
+
+structlog>=23.2.0

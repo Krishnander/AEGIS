@@ -1,0 +1,18 @@
+services:
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - HF_TOKEN=${HF_TOKEN}
+      - KAGGLE_MEDGEMMA_URL=${KAGGLE_MEDGEMMA_URL}
+      - OLLAMA_URL=http://host.docker.internal:11434
+      - NEXT_PUBLIC_DEMO_MODE=${NEXT_PUBLIC_DEMO_MODE:-false}
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-}
+    volumes:
+      - ./web/public/models:/app/public/models:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped

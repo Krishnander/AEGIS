@@ -1,0 +1,32 @@
+[
+  {
+    "id": "acs-high",
+    "prompt": "Severe substernal chest pain radiating to left arm with diaphoresis and nausea",
+    "expected": "high"
+  },
+  {
+    "id": "sepsis-high",
+    "prompt": "High fever 39.5, hypotension 85/50, tachycardia 130, confusion",
+    "expected": "high"
+  },
+  {
+    "id": "stroke-high",
+    "prompt": "Sudden left-sided weakness, facial droop, slurred speech, severe headache",
+    "expected": "high"
+  },
+  {
+    "id": "pe-high",
+    "prompt": "Sudden dyspnea after surgery, pleuritic chest pain, right leg swelling, hemoptysis",
+    "expected": "high"
+  },
+  {
+    "id": "appendicitis-medium",
+    "prompt": "Periumbilical pain migrating to right lower quadrant with nausea and low-grade fever",
+    "expected": "medium"
+  },
+  {
+    "id": "migraine-low",
+    "prompt": "Unilateral throbbing headache with photophobia, nausea, and visual aura, no neuro deficits",
+    "expected": "low"
+  }
+]

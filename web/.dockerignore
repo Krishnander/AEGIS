@@ -1,0 +1,13 @@
+node_modules
+.next
+.git
+*.md
+.env.local
+.playwright-mcp
+.sisyphus
+tests
+
+# Large model files — volume-mounted at runtime
+public/models/*.task
+public/models/*.bin
+public/models/*.litertlm

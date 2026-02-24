@@ -1,0 +1,127 @@
+[
+  {
+    "id": "case_chest_pain",
+    "prompt": "55-year-old male with chest pain radiating to left arm, diaphoresis, and nausea.",
+    "expected": "high"
+  },
+  {
+    "id": "case_sore_throat",
+    "prompt": "22-year-old female with sore throat, low-grade fever, and fatigue for 2 days.",
+    "expected": "low"
+  },
+  {
+    "id": "case_shortness_breath",
+    "prompt": "68-year-old with sudden shortness of breath and pleuritic chest pain.",
+    "expected": "high"
+  },
+  {
+    "id": "case_abdominal_pain",
+    "prompt": "35-year-old with intermittent abdominal pain and nausea, no fever.",
+    "expected": "medium"
+  },
+  {
+    "id": "case_headache",
+    "prompt": "30-year-old with headache, photophobia, and nausea, history of migraines.",
+    "expected": "medium"
+  },
+  {
+    "id": "case_rash",
+    "prompt": "Child with itchy rash after new soap exposure, no breathing issues.",
+    "expected": "low"
+  },
+  {
+    "id": "case_stroke_warning",
+    "prompt": "70-year-old with sudden facial droop, slurred speech, and right arm weakness started 30 minutes ago.",
+    "expected": "high"
+  },
+  {
+    "id": "case_fever_cough",
+    "prompt": "40-year-old with fever, cough, and body aches for 3 days, drinking fluids.",
+    "expected": "low"
+  },
+  {
+    "id": "case_anaphylaxis",
+    "prompt": "Teen with peanut allergy, throat tightness, wheezing, and hives after exposure.",
+    "expected": "high"
+  },
+  {
+    "id": "case_uti",
+    "prompt": "28-year-old with burning urination and urinary frequency, no flank pain or fever.",
+    "expected": "low"
+  },
+  {
+    "id": "case_appendicitis",
+    "prompt": "20-year-old with worsening right lower quadrant pain, nausea, and fever.",
+    "expected": "high"
+  },
+  {
+    "id": "case_gi_bug",
+    "prompt": "8-year-old with vomiting and diarrhea for 24 hours, tolerating small sips of water.",
+    "expected": "medium"
+  },
+  {
+    "id": "case_vision_loss",
+    "prompt": "60-year-old with sudden painless loss of vision in one eye.",
+    "expected": "high"
+  },
+  {
+    "id": "case_back_pain",
+    "prompt": "45-year-old with lower back pain after lifting, no numbness, no bowel/bladder changes.",
+    "expected": "low"
+  },
+  {
+    "id": "case_palpitations",
+    "prompt": "50-year-old with palpitations and dizziness, no chest pain, symptoms started today.",
+    "expected": "medium"
+  },
+  {
+    "id": "case_pregnant_bleeding",
+    "prompt": "30-year-old pregnant at 10 weeks with vaginal bleeding and cramping.",
+    "expected": "high"
+  },
+  {
+    "id": "case_asthma",
+    "prompt": "14-year-old with wheezing and shortness of breath after exercise, improves with inhaler.",
+    "expected": "medium"
+  },
+  {
+    "id": "case_dka",
+    "prompt": "19-year-old with diabetes, abdominal pain, vomiting, and rapid breathing.",
+    "expected": "high"
+  },
+  {
+    "id": "case_fainting",
+    "prompt": "65-year-old fainted while standing, now awake, no trauma, on blood pressure meds.",
+    "expected": "medium"
+  },
+  {
+    "id": "case_dehydration",
+    "prompt": "3-year-old with dry mouth, fewer wet diapers, and lethargy after diarrhea.",
+    "expected": "high"
+  },
+  {
+    "id": "case_cellulitis",
+    "prompt": "52-year-old with red, warm, painful leg and fever.",
+    "expected": "medium"
+  },
+  {
+    "id": "case_confusion",
+    "prompt": "80-year-old with new confusion and fever, caregiver notes foul-smelling urine.",
+    "expected": "high"
+  },
+  {
+    "id": "case_covid",
+    "prompt": "33-year-old with mild cough, loss of taste, and low-grade fever.",
+    "expected": "low"
+  },
+  {
+    "id": "case_fracture",
+    "prompt": "25-year-old with wrist pain and swelling after a fall on an outstretched hand.",
+    "expected": "medium"
+  },
+  {
+    "id": "case_hypertensive",
+    "prompt": "58-year-old with severe headache and very high blood pressure reading at home.",
+    "expected": "high"
+  }
+]
