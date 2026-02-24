@@ -1,4 +1,4 @@
-# AEGIS — Clinical Triage AI
+# AEGIS - Clinical Triage AI
 
 <div align="center">
 
@@ -21,14 +21,14 @@ Runs offline in the browser. No patient data leaves the device.
 
 AEGIS takes free-text symptom descriptions (e.g. *"55 y/o male, crushing chest pain radiating to left arm, diaphoresis"*) and returns:
 
-- **Severity classification** — HIGH / MEDIUM / LOW with clinical justification
-- **Symptom extraction** — discrete tags for each identified symptom
-- **Clinical assessment** — differential reasoning and recommended next steps
-- **Causal reasoning graph** — visual map of how symptoms contribute to the risk classification
-- **Clinical Reasoning panel** — three views of the model's decision process:
-  - *Features* — per-symptom attribution (which symptoms drove the classification)
-  - *Reasoning* — step-by-step trace with clinical guideline citations
-  - *What-If* — counterfactual analysis (how the output changes if symptoms are added/removed)
+- **Severity classification** - HIGH / MEDIUM / LOW with clinical justification
+- **Symptom extraction** - discrete tags for each identified symptom
+- **Clinical assessment** - differential reasoning and recommended next steps
+- **Causal reasoning graph** - visual map of how symptoms contribute to the risk classification
+- **Clinical Reasoning panel** - three views of the model's decision process:
+  - *Features* - per-symptom attribution (which symptoms drove the classification)
+  - *Reasoning* - step-by-step trace with clinical guideline citations
+  - *What-If* - counterfactual analysis (how the output changes if symptoms are added/removed)
 
 > **Disclaimer:** AEGIS is a research demonstration. It is not approved for clinical diagnosis or treatment decisions. All data is synthetic.
 
@@ -62,8 +62,8 @@ AEGIS takes free-text symptom descriptions (e.g. *"55 y/o male, crushing chest p
 
 | Layer | Model | Runtime | Role |
 |-------|-------|---------|------|
-| **Edge** | Gemma 3 1B IT — int4 LiteRT (668 MB) | MediaPipe LLM Inference (WebGPU) | Offline triage — all computation in-browser |
-| **Cloud** | MedGemma 1.5 4B IT — NF4 quantised | FastAPI on Kaggle T4 via ngrok | Deeper reasoning when connectivity available |
+| **Edge** | Gemma 3 1B IT - int4 LiteRT (668 MB) | MediaPipe LLM Inference (WebGPU) | Offline triage - all computation in-browser |
+| **Cloud** | MedGemma 1.5 4B IT - NF4 quantised | FastAPI on Kaggle T4 via ngrok | Deeper reasoning when connectivity available |
 
 The system tries the cloud backend first, then falls back to edge inference automatically.
 
@@ -104,10 +104,10 @@ For the cloud backend, see [Cloud Backend Setup](#cloud-backend-setup).
 Create `web/.env.local`:
 
 ```env
-# Cloud backend (optional — Kaggle ngrok URL)
+# Cloud backend (optional - Kaggle ngrok URL)
 NEXT_PUBLIC_API_URL=https://your-ngrok-url.ngrok-free.app
 
-# Edge model — defaults to /models/gemma3-1b-it-int4-web.task
+# Edge model - defaults to /models/gemma3-1b-it-int4-web.task
 NEXT_PUBLIC_EDGE_MODEL_URL=
 NEXT_PUBLIC_EDGE_MODEL_LABEL=Gemma 3 1B Edge
 
@@ -139,7 +139,7 @@ The cloud backend runs MedGemma 1.5 4B IT on a Kaggle T4 GPU, exposed via ngrok.
 aegis-core/
 ├── web/                              # Next.js 14 frontend
 │   ├── src/
-│   │   ├── app/                     # App Router — pages + API routes
+│   │   ├── app/                     # App Router - pages + API routes
 │   │   │   ├── page.tsx             # Main dashboard
 │   │   │   └── api/analyze/         # Cloud API proxy (Kaggle → Ollama → HF)
 │   │   ├── components/
@@ -151,7 +151,7 @@ aegis-core/
 │   │   ├── hooks/
 │   │   │   └── use-agent.ts         # Analysis orchestration hook
 │   │   ├── lib/
-│   │   │   ├── mediapipe.ts         # Edge AI — Gemma 3 1B via MediaPipe
+│   │   │   ├── mediapipe.ts         # Edge AI - Gemma 3 1B via MediaPipe
 │   │   │   ├── orchestrator.ts      # Analysis pipeline + response cache
 │   │   │   ├── retrieval.ts         # BM25 clinical knowledge base (14 guidelines)
 │   │   │   ├── explainability.ts    # Feature attribution, reasoning chains, counterfactuals
@@ -165,7 +165,7 @@ aegis-core/
 │   ├── Dockerfile                   # Multi-stage Alpine build
 │   └── package.json
 ├── brain/                            # Cloud backend
-│   ├── medgemma_kaggle_server.ipynb # Kaggle notebook — MedGemma 1.5 4B
+│   ├── medgemma_kaggle_server.ipynb # Kaggle notebook - MedGemma 1.5 4B
 │   ├── prompts.py                   # Clinical prompt templates
 │   └── requirements.txt
 ├── docs/                             # Submission documents
@@ -183,8 +183,8 @@ aegis-core/
 
 ```bash
 cd web
-npm test                    # Vitest — single run (190 tests)
-npm run test:watch          # Vitest — watch mode
+npm test                    # Vitest - single run (190 tests)
+npm run test:watch          # Vitest - watch mode
 ```
 
 ---
@@ -195,12 +195,11 @@ npm run test:watch          # Vitest — watch mode
 
 **Clinical knowledge base:** 14 curated guideline entries covering cardiology, neurology, respiratory, GI, infectious disease, musculoskeletal, endocrinology, psychiatry, and allergy. BM25 hybrid retrieval augments model responses with relevant citations.
 
-**Safety pipeline:** Input sanitisation, PII detection, overconfidence flagging, out-of-distribution detection, and severity calibration (temperature scaling with conformal prediction). Edge inference keeps all data in-browser — no network transmission.
+**Safety pipeline:** Input sanitisation, PII detection, overconfidence flagging, out-of-distribution detection, and severity calibration (temperature scaling with conformal prediction). Edge inference keeps all data in-browser - no network transmission.
 
 **Deployment options:**
-- **Docker** — full stack including edge model (recommended for local demo)
-- **Vercel** — frontend only (cloud backend required; edge model exceeds Vercel's 100 MB limit)
-- **Kaggle notebook** — cloud backend for MedGemma 1.5 4B (free T4 GPU)
+- **Docker** - full stack including edge model
+- **Kaggle notebook** - cloud backend for MedGemma 1.5 4B
 
 ---
 
@@ -236,7 +235,7 @@ const { status, result, analyze, reset, error } = useAgent();
 
 ## License
 
-Apache 2.0 — see [LICENSE](LICENSE).
+Apache 2.0 - see [LICENSE](LICENSE).
 
 ---
 
